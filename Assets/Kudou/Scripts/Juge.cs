@@ -10,20 +10,13 @@ public class Juge : MonoBehaviour
     [SerializeField] Button[] _buttons;
     [SerializeField] EventSystem eventSystem;
     [SerializeField] string[] _answerItems;
-    
-    bool isComplet;
-    bool isGame;
+    int noGoodCountMax;
+    int noGoodCountNow;
     int i = 0;
     // Start is called before the first frame update
     void Start()
     {
         ResetButton(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void Jugement()
@@ -41,7 +34,12 @@ public class Juge : MonoBehaviour
         }
         else
         {
+            noGoodCountNow++;
             Debug.Log("ŠÔˆá‚¦‚Ä‚¢‚Ü‚·");
+            if(noGoodCountNow == noGoodCountMax)
+            {
+                ResetButton(false);
+            }
         }
     }
 
@@ -49,13 +47,14 @@ public class Juge : MonoBehaviour
     {
         ResetButton(true);
         _answerItems = collision.GetComponent<PatientData>().ItemsName;
+        noGoodCountMax = collision.GetComponent<PatientData>().NoGoodCount;
         
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         i = 0;
-
+        noGoodCountNow = 0;
     }
 
     private void ResetButton(bool TrueFalse)
