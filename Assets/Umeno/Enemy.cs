@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     Animator _anim;
+    public int _damage;
 
     void Start()
     {
