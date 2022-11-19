@@ -21,7 +21,7 @@ public class RankingScript : MonoBehaviour
 
     public void Score()
     {
-        _dictionary.Add(_inputfield.text, _resultscore);
+        _dictionary.Add(_inputfield.text, 100);
         foreach (var ans in _dictionary.OrderByDescending(c => c.Value))
         {
             _rankingtext.text = ans.Key + " " + ans.Value.ToString();
