@@ -33,6 +33,7 @@ public class HeartBeat : MonoBehaviour
         _timer += Time.deltaTime;
         if(_timer > _interval)
         {
+            
             for(int i = 0; i < _heartBeat.positionCount; i++)
             {
                 var r = Random.Range(-2, 2);
