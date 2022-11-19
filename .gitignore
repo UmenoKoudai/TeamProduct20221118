@@ -60,3 +60,10 @@ crashlytics-build.properties
 
 ProjectSettings/
 UserSettings/
+Assets/Plugins.meta
+Assets/Umeno.meta
+Assets/Plugins/Demigiant.meta
+Assets/Plugins/Demigiant/DOTween.meta
+Assets/Plugins/Demigiant/DOTween/Editor.meta
+Assets/Umeno/UmenoTest.unity
+Assets/Umeno/UmenoTest.unity.meta
