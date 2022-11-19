@@ -5,27 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class HeartBeat : MonoBehaviour
 {
+    
+    [SerializeField]float _interval;
+    [SerializeField]float _timeResetinterval;
+    [SerializeField] HeatBeatState _state = HeatBeatState.Normal;
     LineRenderer _heartBeat;
-    int _interval = 5;
     float _timer;
-    //BeatPosition[][] _beatPositions;
-    //int d = 100;
-    //float _theta;
+    float _beatTime;
 
     void Start()
     {
         _heartBeat = GetComponent<LineRenderer>();
         _heartBeat.positionCount = 9;
-        //for (int i = 0; i < _heartBeat.positionCount; i++)
-        //{
-        //    for (int j = 0; j < _heartBeat.positionCount; j++)
-        //    {
-        //        var x = d * (i - (10 - 1) / 3.0f);
-        //        var y = d * (j - (10 - 1) / 3.0f);
-        //        var z = 0f;
-        //        _beatPositions[i][j] = new BeatPosition(x, y, z);
-        //    }
-        //}
     }
 
     void Update()
@@ -36,25 +27,96 @@ public class HeartBeat : MonoBehaviour
             
             for(int i = 0; i < _heartBeat.positionCount; i++)
             {
-                var r = Random.Range(-2, 2);
-                _heartBeat.SetPosition(i, _heartBeat.GetPosition(i) + new Vector3(0.5f, r, 0));
+                _beatTime += Time.deltaTime;
+                //var r = Random.Range(-2, 2);
+                //var pointCount = _heartBeat.positionCount / 2;
+                //if (i <= pointCount + 4 && i >= pointCount - 4)
+                //{
+                //    _heartBeat.SetPosition(i, _heartBeat.GetPosition(i) + new Vector3(0.5f, r, 0));
+                //}
+                //else
+                //{
+                //    _heartBeat.SetPosition(i, _heartBeat.GetPosition(i) + new Vector3(0.5f, 0, 0));
+                //}
+                switch (i)
+                {
+                    case 0:
+                        _heartBeat.SetPosition(i, new Vector3(5, 3, 0));
+                        break;
+                    case 1:
+                        _heartBeat.SetPosition(i, new Vector3(5.5f, 3, 0));
+                        break;
+                    case 2:
+                        _heartBeat.SetPosition(i, new Vector3(5.8f, 4, 0));
+                        break;
+                    case 3:
+                        _heartBeat.SetPosition(i, new Vector3(6f, 3, 0));
+                        break;
+                    case 4:
+                        _heartBeat.SetPosition(i, new Vector3(6.2f, 3, 0));
+                        break;
+                    case 5:
+                        _heartBeat.SetPosition(i, new Vector3(6.4f, 2, 0));
+                        break;
+                    case 6:
+                        _heartBeat.SetPosition(i, new Vector3(6.6f, 3.5f, 0));
+                        break;
+                    case 7:
+                        _heartBeat.SetPosition(i, new Vector3(6.7f, 3, 0));
+                        break;
+                    case 8:
+                        _heartBeat.SetPosition(i, new Vector3(7.5f, 3, 0));
+                        break;
+                }
             }
-            //for (int i = 0; i < _heartBeat.positionCount; i++)
-            //{
-            //    _heartBeat.SetPosition(i, new Vector3(0, 0, 0));
-            //}
-            _timer = 0;
+            if (_beatTime > _timeResetinterval)
+            {
+                _timer = 0;
+                _beatTime = 0;
+            }
         }
         else
         {
-            //for (int i = 0; i < _heartBeat.positionCount; i++)
-            //{
-            //    _heartBeat.SetPosition(i, _heartBeat.GetPosition(i) + new Vector3(0.5f, 0, 0));
-            //}
             for (int i = 0; i < _heartBeat.positionCount; i++)
             {
-                _heartBeat.SetPosition(i, new Vector3(0, 0, 0));
+                //_heartBeat.SetPosition(i, new Vector3(i * 0.5f, 0, 0));
+                switch (i)
+                {
+                    case 0:
+                        _heartBeat.SetPosition(i, new Vector3(5, 3, 0));
+                        break;
+                    case 1:
+                        _heartBeat.SetPosition(i, new Vector3(5.5f, 3, 0));
+                        break;
+                    case 2:
+                        _heartBeat.SetPosition(i, new Vector3(5.8f, 3, 0));
+                        break;
+                    case 3:
+                        _heartBeat.SetPosition(i, new Vector3(6f, 3, 0));
+                        break;
+                    case 4:
+                        _heartBeat.SetPosition(i, new Vector3(6.2f, 3, 0));
+                        break;
+                    case 5:
+                        _heartBeat.SetPosition(i, new Vector3(6.4f, 3, 0));
+                        break;
+                    case 6:
+                        _heartBeat.SetPosition(i, new Vector3(6.6f, 3, 0));
+                        break;
+                    case 7:
+                        _heartBeat.SetPosition(i, new Vector3(6.7f, 3, 0));
+                        break;
+                    case 8:
+                        _heartBeat.SetPosition(i, new Vector3(7.5f, 3, 0));
+                        break;
+                }
             }
         }
+    }
+    enum HeatBeatState
+    {
+        Normal,
+        Danger,
+        Stop,
     }
 }
