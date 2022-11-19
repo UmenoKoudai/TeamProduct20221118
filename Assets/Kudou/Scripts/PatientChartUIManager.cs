@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class PatientChartUIManager : MonoBehaviour
 {
-    Text _state;
-    Text[] _needItem;
+    [SerializeField]Text _state;
+    [SerializeField]Text _needItemText;
+    string[] _needItems;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _state.text = collision.GetComponent<PatientData>().State;
-        //for (var i = 0; i < _needItem.Length; i++)
-        //{
-        //    _needItem[i].text = collision.GetComponent<PatientData>().ItemsName[i];
-        //}
+        _needItems = collision.GetComponent<PatientData>().ItemsName;
+        for (int i = 0; i < _needItems.Length; i++)
+        {
+            _needItemText.text += $"{_needItems[i]} ";
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
