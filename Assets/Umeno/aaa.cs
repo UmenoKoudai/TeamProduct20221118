@@ -27,6 +27,19 @@ public class aaa : MonoBehaviour
 
     void Update()
     {
+        //var r = Random.Range(-2, 2);
+        //var pointCount = _heartBeat.positionCount / 2;
+        //if (i <= pointCount + 4 && i >= pointCount - 4)
+        //{
+        //    _heartBeat.SetPosition(i, _heartBeat.GetPosition(i) + new Vector3(0.5f, r, 0));
+        //}
+        //else
+        //{
+        //    _heartBeat.SetPosition(i, _heartBeat.GetPosition(i) + new Vector3(0.5f, 0, 0));
+        //}
+
+        //_heartBeat.SetPosition(i, new Vector3(i * 0.5f, 0, 0));
+
         //for(int i = 0; i < _heartBeat.positionCount; i++)
         //{
         //    for(int j = 0; j < _heartBeat.positionCount; j++)
