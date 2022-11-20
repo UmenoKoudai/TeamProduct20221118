@@ -2,18 +2,67 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MoveScene : MonoBehaviour
 {
-    [SerializeField] 
-    void Start()
+   //タイトルシーン
+
+    public void TitleBottan()
     {
-        
+        AudioSource audio = this.gameObject.GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            audio.Play();
+        }
+        Invoke("Title",1.5f);
+    }
+    public void Title()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 
-    void Update()
+    //メインシーン
+
+    public void MainBottan()
     {
-        
+        AudioSource audio = this.gameObject.GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            audio.Play();
+        }
+        Invoke("Main", 1.5f);
     }
-    public void _pushBottan()
+    public void Main()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("MainScene");
+    }
+
+    //ランキングシーン
+
+    public void RankingBottan()
+    {
+        AudioSource audio = this.gameObject.GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            audio.Play();
+        }
+        Invoke("Ranking", 1.5f);
+    }
+    public void Ranking()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
+    //リザルトシーン
+
+    public void ResultBottan()
+    {
+        AudioSource audio = this.gameObject.GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            audio.Play();
+        }
+        Invoke("Title", 1.5f);
+    }
+    public void Result()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 }
