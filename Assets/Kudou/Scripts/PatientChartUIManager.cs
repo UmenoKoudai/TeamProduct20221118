@@ -10,15 +10,22 @@ public class PatientChartUIManager : MonoBehaviour
     string[] _needItems;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _state.text = collision.GetComponent<PatientData>().State;
-        _needItems = collision.GetComponent<PatientData>().ItemsName;
-        for (int i = 0; i < _needItems.Length; i++)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            _needItemText.text += $"{_needItems[i]} ";
+            _state.text = collision.GetComponent<PatientData>().State;
+            _needItems = collision.GetComponent<PatientData>().ItemsName;
+            for (int i = 0; i < _needItems.Length; i++)
+            {
+                _needItemText.text += $"{_needItems[i]} ";
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            _needItemText.text = "";
+            _state.text = "";
+        }
     }
 }
