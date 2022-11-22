@@ -17,7 +17,7 @@ public class MoveScene : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
-
+    
     //メインシーン
 
     public void MainBottan()
@@ -51,7 +51,7 @@ public class MoveScene : MonoBehaviour
     }
 
     //リザルトシーン
-
+        
     public void ResultBottan()
     {
         AudioSource audio = this.gameObject.GetComponent<AudioSource>();
