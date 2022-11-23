@@ -17,6 +17,18 @@ public class GameManager : MonoBehaviour
     public int TotalScore { get => _totalScore; }
     public GameState State { get => _state; }
 
+    private void Awake()
+    {
+        if(FindObjectsOfType<GameManager>().Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     void Start()
     {
         _timerbar.maxValue = _timer;
@@ -46,9 +58,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddScore(int score)
+    public void AddScore()
     {
-        _totalScore += score;
+        _totalScore++;
     }
 }
 public enum GameState
