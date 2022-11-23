@@ -10,6 +10,8 @@ public class Juge : MonoBehaviour
     [SerializeField] Button[] _buttons;
     [SerializeField] EventSystem eventSystem;
     [SerializeField] string[] _answerItems;
+    [SerializeField] GameObject _successImage;
+    [SerializeField] GameObject _failureImage;
     int noGoodCountMax;
     int noGoodCountNow;
     int i = 0;
@@ -21,6 +23,8 @@ public class Juge : MonoBehaviour
     void Start()
     {
         ResetButton(false);
+        _failureImage.SetActive(false);
+        _successImage.SetActive(false);
     }
 
     public void Jugement()
@@ -29,8 +33,10 @@ public class Juge : MonoBehaviour
 
         if(i == _answerItems.Length - 1)
         {
+            _successImage.SetActive(true);
             ResetButton(false);
             _patientAnim.Play("Fade");
+            
             
         }
         else if(item.ItemName == _answerItems[i])
@@ -45,6 +51,7 @@ public class Juge : MonoBehaviour
             if(noGoodCountNow == noGoodCountMax)
             {
                 ResetButton(false);
+                _failureImage.SetActive(true);
             }
         }
     }
@@ -53,6 +60,8 @@ public class Juge : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            _successImage.SetActive(false);
+            _failureImage.SetActive(false);
             ResetButton(true);
             _answerItems = collision.GetComponent<PatientData>().ItemsName;
             noGoodCountMax = collision.GetComponent<PatientData>().NoGoodCount;
@@ -68,6 +77,7 @@ public class Juge : MonoBehaviour
             noGoodCountNow = 0;
             
             destroyGO = collision.gameObject;
+            
         }
     }
 
