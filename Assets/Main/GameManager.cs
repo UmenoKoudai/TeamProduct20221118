@@ -6,22 +6,43 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject[] _patients;
+    [SerializeField] Slider _timerbar;
+    [SerializeField] float _timer;
+    [SerializeField] float _countDown;
+    [SerializeField] Text _countDownText;
+    GameState _state = GameState.gameStart;
     //Vector2 _createPoint;
     int _totalScore;
 
     public int TotalScore { get => _totalScore; }
+    public GameState State { get => _state; }
 
     void Start()
     {
-
+        _timerbar.maxValue = _timer;
+        _timerbar.value = _timer;
     }
 
     void Update()
     {
-        if (FindObjectsOfType<Enemy>().Length == 0)
+        if (_state == GameState.isGame)
         {
-            int r = Random.Range(0, _patients.Length);
-            Instantiate(_patients[r], transform.position, transform.rotation);
+            _timerbar.value -= Time.deltaTime;
+            if (FindObjectsOfType<Enemy>().Length == 0)
+            {
+                int r = Random.Range(0, _patients.Length);
+                Instantiate(_patients[r], transform.position, transform.rotation);
+            }
+        }
+        else
+        {
+            _countDown -= Time.deltaTime;
+            _countDownText.text = $"{_countDown.ToString("f0")}";
+            if(_countDown < 0)
+            {
+                _countDownText.gameObject.SetActive(false);
+                _state = GameState.isGame;
+            }
         }
     }
 
@@ -29,4 +50,9 @@ public class GameManager : MonoBehaviour
     {
         _totalScore += score;
     }
+}
+public enum GameState
+{
+    isGame,
+    gameStart,
 }
