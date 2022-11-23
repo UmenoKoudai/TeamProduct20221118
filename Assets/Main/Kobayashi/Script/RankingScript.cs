@@ -16,7 +16,7 @@ public class RankingScript : MonoBehaviour
     public InputField _inputfield;
     public Text _rankingtext;
     int _resultscore;
-    public  Dictionary<string, int> _dictionary 
+    public static Dictionary<string, int> _dictionary 
         = new Dictionary<string, int>();
 
     scoredata sco2 = new scoredata();
@@ -25,6 +25,10 @@ public class RankingScript : MonoBehaviour
     {
         _inputfield = _inputfield.GetComponent<InputField>();
         _rankingtext = _rankingtext.GetComponent<Text>();
+
+        //スコアを取得する
+        //_resultscore = GameManager._totalscore;
+
         //JSON形式で保存したハイスコアデータを呼び出しsco2変数に代入
         sco2 = OnLoad();
         //sco2に代入した前回のスコアをスコアの変数に代入
@@ -36,7 +40,11 @@ public class RankingScript : MonoBehaviour
             }
         }
     }
-        
+    void Update()
+   {
+
+   }
+
     public void NameScore()
     {
         sco2.name = _inputfield.text;
@@ -85,8 +93,5 @@ public class RankingScript : MonoBehaviour
         }
 
     }
-    /*void Update()
-    {
-        
-    }*/
+   
 }

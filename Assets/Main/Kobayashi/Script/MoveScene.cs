@@ -15,7 +15,7 @@ public class MoveScene : MonoBehaviour
     }
     public void Title()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("TitleScene");
     }
     
     //メインシーン
@@ -47,7 +47,7 @@ public class MoveScene : MonoBehaviour
     }
     public void Ranking()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("RankingScene");
     }
 
     //リザルトシーン
@@ -59,10 +59,10 @@ public class MoveScene : MonoBehaviour
         {
             audio.Play();
         }
-        Invoke("Title", 1.5f);
+        Invoke("Result", 1.5f);
     }
     public void Result()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("ResultScene");
     }
 }

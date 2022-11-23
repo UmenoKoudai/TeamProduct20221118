@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 408378391}
   - component: {fileID: 408378390}
   m_Layer: 5
-  m_Name: Button (Legacy) (1)
+  m_Name: 'RetryButton '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1036,7 +1036,7 @@ GameObject:
   - component: {fileID: 1839898645}
   - component: {fileID: 1839898644}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: TitleButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1181,8 +1181,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.5, y: -215}
-  m_SizeDelta: {x: -1315, y: -430}
+  m_AnchoredPosition: {x: -33.7558, y: -209.1654}
+  m_SizeDelta: {x: -1291.6616, y: -418.3307}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1882947334
 MonoBehaviour:
