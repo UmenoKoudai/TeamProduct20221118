@@ -7,6 +7,9 @@ public class InatatePlayer : MonoBehaviour
     [SerializeField] GameObject prefab;
     [SerializeField] Juge _juge;
     [SerializeField] Animator _anim;
+    [SerializeField] bool isInstance;
+
+    public bool IsInstance { get => isInstance; set => IsInstance = isInstance; }
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +19,12 @@ public class InatatePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_juge.I == 0)
+        if(isInstance)
         {
             Instantiate(prefab,this.transform.position,Quaternion.identity);
             _anim = GameObject.FindWithTag("Player").GetComponent<Animator>();
             _anim.Play("Fade");
+            isInstance = false;
         }
     }
 }
