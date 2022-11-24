@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PatientChartUIManager : MonoBehaviour
 {
-    [SerializeField]Text _state;
-    [SerializeField]Text _needItemText;
+    [SerializeField,Header("カルテ上にあるStateText")]Text _state;
+    [SerializeField, Header("カルテ上にあるNeedItemText")] Text _needItemText;
     string[] _needItems;
     private void OnTriggerEnter2D(Collider2D collision)
     {
