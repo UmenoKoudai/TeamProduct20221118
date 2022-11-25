@@ -49,10 +49,25 @@ public class Juge : MonoBehaviour
         {
             //今ボタンを押したオブジェクトのItemスクリプトを取ってくる
             Item item = eventSystem.currentSelectedGameObject.GetComponent<Item>();
+
+            
             if (item.ItemName == _answerItems[i])
             {
                 Debug.Log("あっています");
                 i++;
+                Debug.Log(i);
+                if (i == _answerItems.Length) //最後まで順番通りにボタンをおせたら
+                {
+                    FindObjectOfType<GameManager>().AddScore();
+                    FindObjectOfType<HeartBeat>().State = HeartBeat.HeatBeatState.Normal;
+                    //成功のUIを表示する
+                    StartCoroutine(InstantiateImage(_successImage));
+                    //_successImage.SetActive(true);
+                    //buttonを押せなくする
+                    ResetButton(false);
+                    //患者を左に動かすアニメーションを再生
+                    _patientAnim.Play("Fade");
+                }
             }
             else　　//健康な患者が入ってきてもnoGoogCountMaxが１なのでどのボタンを一回押しても失敗になる
             {
@@ -69,23 +84,7 @@ public class Juge : MonoBehaviour
                     //FindObjectOfType<GameManager>().State = GameState.gameOver;
                 }
             }
-            if (i == _answerItems.Length - 1) //最後まで順番通りにボタンをおせたら
-            {
-                FindObjectOfType<GameManager>().AddScore();
-                FindObjectOfType<HeartBeat>().State = HeartBeat.HeatBeatState.Normal;
-                //成功のUIを表示する
-                StartCoroutine(InstantiateImage(_successImage));
-               //_successImage.SetActive(true);
-                //buttonを押せなくする
-                ResetButton(false);
-                //患者を左に動かすアニメーションを再生
-                _patientAnim.Play("Fade");
-            }
-            //else if (item.ItemName == _answerItems[i])
-            //{
-            //    Debug.Log("あっています");
-            //    i++;
-            //}
+            
             
         }
         //else if(FindObjectOfType<GameManager>().State == GameState.gameOver)
