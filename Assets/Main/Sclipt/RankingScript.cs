@@ -16,15 +16,15 @@ public class RankingScript : MonoBehaviour
     public InputField _inputfield;
     public Text _rankingtext;
     int _resultscore;
-    public static Dictionary<string, int> _dictionary 
+    public Dictionary<string, int> _dictionary 
         = new Dictionary<string, int>();
-
     scoredata sco2 = new scoredata();
 
     void Start()
     {
         _inputfield = _inputfield.GetComponent<InputField>();
         _rankingtext = _rankingtext.GetComponent<Text>();
+        _resultscore = FindObjectOfType<GameManager>().TotalScore;
 
         //スコアを取得する
         //_resultscore = GameManager._totalscore;
@@ -40,15 +40,11 @@ public class RankingScript : MonoBehaviour
             }
         }
     }
-    void Update()
-   {
 
-   }
-
-    public void NameScore()
+    public void NameScore(string name, int score)
     {
-        sco2.name = _inputfield.text;
-        sco2.score = _resultscore;
+        sco2.name = name;
+        sco2.score = score;
         OnSave(sco2);
     }
     public void Score()
@@ -57,8 +53,8 @@ public class RankingScript : MonoBehaviour
         foreach (var ans in _dictionary.OrderByDescending(c => c.Value))
         {
             _rankingtext.text = ans.Key + " " + ans.Value.ToString();
+            NameScore(ans.Key, ans.Value);
         }
-       
     }
 
     //スコアをJSON形式で保存
@@ -91,7 +87,5 @@ public class RankingScript : MonoBehaviour
             Debug.LogWarning("データがありません");
             return null;
         }
-
-    }
-   
+    } 
 }

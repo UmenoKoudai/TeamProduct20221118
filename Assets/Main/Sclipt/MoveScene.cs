@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MoveScene : MonoBehaviour
 {
+    [SerializeField] GameObject _open;
+    [SerializeField] GameObject _close;
+    [SerializeField] AudioSource _audio;
    //タイトルシーン
 
     public void TitleBottan()
@@ -50,6 +53,20 @@ public class MoveScene : MonoBehaviour
         SceneManager.LoadScene("RankingScene");
     }
 
+    public void SceneMove(string scenename)
+    {
+        _audio.Play();
+        SceneManager.LoadScene(scenename);
+    }
+    public void SetActive()
+    {
+        if(_audio)
+        {
+            _audio.Play();
+        }
+        _open.SetActive(true);
+        _close.SetActive(false);
+    }
     //リザルトシーン
         
     public void ResultBottan()
