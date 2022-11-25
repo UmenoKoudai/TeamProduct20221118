@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 343767160791285411}
   - component: {fileID: 4729725475373739809}
   m_Layer: 0
-  m_Name: Patient5
+  m_Name: Patient6
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,9 +108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemName:
-  - "\u5065\u5EB7"
-  _state: "\u51E6\u7F6E\u306A\u3057"
-  _noGoodCount: 1
+  - "\u5FC3\u81D3\u30DE\u30C3\u30B5\u30FC\u30B8"
+  _state: "\u8133\u9707\u76EA"
+  _noGoodCount: 2
   _juge: {fileID: 0}
 --- !u!1 &3472122756030831812
 GameObject:
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 8d4439b3671f32948a130025ef63b8cd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e79bdb0404458140876a059b0aea5a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -8,6 +8,7 @@ public class PatientChartUIManager : MonoBehaviour
     [SerializeField,Header("カルテ上にあるStateText")]Text _state;
     [SerializeField, Header("カルテ上にあるNeedItemText")] Text _needItemText;
     string[] _needItems;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
