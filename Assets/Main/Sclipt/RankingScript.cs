@@ -18,6 +18,7 @@ public class RankingScript : MonoBehaviour
     int _resultscore;
     public Dictionary<string, int> _dictionary 
         = new Dictionary<string, int>();
+    List<scoredata> _rankingData;
     scoredata sco2 = new scoredata();
 
     void Start()
@@ -30,15 +31,15 @@ public class RankingScript : MonoBehaviour
         //_resultscore = GameManager._totalscore;
 
         //JSON形式で保存したハイスコアデータを呼び出しsco2変数に代入
-        sco2 = OnLoad();
+        _rankingData = OnLoad();
         //sco2に代入した前回のスコアをスコアの変数に代入
-        if(sco2 != null)
-        {
-            for(var i = 0;i < sco2.name.Length;i++)
-            {
-                _dictionary.Add(sco2.name, sco2.score);
-            }
-        }
+        //if(_rankingData != null)
+        //{
+        //    for(var i = 0;i < _rankingData.Count;i++)
+        //    {
+        //        _dictionary.Add(sco2.name, sco2.score);
+        //    }
+        //}
     }
 
     public void NameScore(string name, int score)
@@ -50,6 +51,10 @@ public class RankingScript : MonoBehaviour
     public void Score()
     {
         _dictionary.Add(_inputfield.text, _resultscore);
+        foreach(var data in _rankingData)
+        {
+            _dictionary.Add(data.name, data.score);
+        }
         foreach (var ans in _dictionary.OrderByDescending(c => c.Value))
         {
             _rankingtext.text = ans.Key + " " + ans.Value.ToString();
@@ -69,7 +74,7 @@ public class RankingScript : MonoBehaviour
         }
     }
     //スコアの呼び出し
-    public scoredata OnLoad()
+    public List<scoredata> OnLoad()
     {
         try
         {
@@ -79,7 +84,7 @@ public class RankingScript : MonoBehaviour
                 //string datastr = "";
                 string datastr = reader.ReadLine();
                 reader.Close();
-                return JsonUtility.FromJson<scoredata>(datastr); ;
+                return JsonUtility.FromJson<List<scoredata>>(datastr); ;
             }
         }
         catch

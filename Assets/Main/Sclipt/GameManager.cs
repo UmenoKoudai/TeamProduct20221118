@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     GameState _state = GameState.gameStart;
     //Vector2 _createPoint;
     int _totalScore;
+    public bool _timeStop;
 
     public int TotalScore { get => _totalScore; }
     public GameState State { get => _state; set => _state = value; }
@@ -39,7 +40,14 @@ public class GameManager : MonoBehaviour
     {
         if (_state == GameState.isGame)
         {
-            _timerbar.value -= Time.deltaTime;
+            if (_timeStop)
+            {
+                _timerbar.value = _timer;
+            }
+            else
+            {
+                _timerbar.value -= Time.deltaTime;
+            }
             if (FindObjectsOfType<PatientData>().Length == 0)
             {
                 int r = Random.Range(0, _patients.Length);
@@ -72,4 +80,6 @@ public enum GameState
     isGame,
     gameStart,
     gameOver,
+    TimerReset,
+    timeStop,
 }

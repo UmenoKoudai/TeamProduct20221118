@@ -95,12 +95,11 @@ GameObject:
   - component: {fileID: 3744675445470651337}
   - component: {fileID: 3744675445470651338}
   - component: {fileID: 3744675445470651339}
-  - component: {fileID: 5080180018573389015}
   - component: {fileID: 4257380706918595146}
   - component: {fileID: 4583408674424541478}
   m_Layer: 0
   m_Name: Patient2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,20 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e8b6a8c66cab1429fe726f16051e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5080180018573389015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3744675445470651336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7eeda573ef8b7d34f8cd0f113f4c7cb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _state: {fileID: 0}
-  _needItemText: {fileID: 0}
 --- !u!61 &4257380706918595146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -206,9 +191,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ab18fe909020f49a81dbb62e793907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: []
-  _state: 
-  _noGoodCount: 0
+  _itemName:
+  - "\u6458\u51FA"
+  - "\u7E2B\u5408"
+  _state: "\u304C\u3093"
+  _noGoodCount: 3
   _juge: {fileID: 0}
 --- !u!1 &3744675445489506615
 GameObject:
@@ -234,14 +221,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3744675445489506615}
-  m_LocalRotation: {x: -0.7071068, y: 0.7071068, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.4959707, y: 1.337332, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1945, y: 1.1945, z: 1.1945}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3744675445470651337}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3744675445489506617
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -283,7 +270,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 30fcb9135a4b5604cb13889e3f02713c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 73dba8b993efcc24e8ec921ca74ff2fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

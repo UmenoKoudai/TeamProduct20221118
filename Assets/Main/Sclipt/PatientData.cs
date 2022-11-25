@@ -14,6 +14,10 @@ public class PatientData : MonoBehaviour
     public int NoGoodCount { get => _noGoodCount;}
     public string State { get => _state;}
 
+    private void Awake()
+    {
+        _juge = GameObject.FindObjectOfType<Juge>();
+    }
     //アニメーションイベントを使用
     public void ObjectDestroy()
     {
