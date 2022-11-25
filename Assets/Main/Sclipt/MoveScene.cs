@@ -34,7 +34,7 @@ public class MoveScene : MonoBehaviour
     }
     public void Main()
     {
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     //ランキングシーン
@@ -53,6 +53,11 @@ public class MoveScene : MonoBehaviour
         SceneManager.LoadScene("RankingScene");
     }
 
+    public void SceneMove(string scenename)
+    {
+        _audio.Play();
+        SceneManager.LoadScene(scenename);
+    }
     public void SetActive()
     {
         if(_audio)

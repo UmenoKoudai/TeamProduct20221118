@@ -249,7 +249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &297156631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,8 +432,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 350781375}
         m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
-        m_MethodName: MainBottan
-        m_Mode: 1
+        m_MethodName: SceneMove
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -993,6 +993,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 987967154167069005, guid: 3b7b0a36ee1d4b6449b5910a179fd476, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 987967154167069006, guid: 3b7b0a36ee1d4b6449b5910a179fd476, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 987967154167069007, guid: 3b7b0a36ee1d4b6449b5910a179fd476, type: 3}

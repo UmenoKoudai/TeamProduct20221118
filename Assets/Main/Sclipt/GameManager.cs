@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     int _totalScore;
 
     public int TotalScore { get => _totalScore; }
-    public GameState State { get => _state; }
+    public GameState State { get => _state; set => _state = value; }
 
     private void Awake()
     {
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         if (_state == GameState.isGame)
         {
             _timerbar.value -= Time.deltaTime;
-            if (FindObjectsOfType<Enemy>().Length == 0)
+            if (FindObjectsOfType<PatientData>().Length == 0)
             {
                 int r = Random.Range(0, _patients.Length);
                 Instantiate(_patients[r], transform.position, transform.rotation);
@@ -56,6 +56,10 @@ public class GameManager : MonoBehaviour
                 _state = GameState.isGame;
             }
         }
+        if(_timerbar.value <= 0)
+        {
+            _state = GameState.gameOver;
+        }
     }
 
     public void AddScore()
@@ -67,4 +71,5 @@ public enum GameState
 {
     isGame,
     gameStart,
+    gameOver,
 }

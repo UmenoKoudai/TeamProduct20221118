@@ -26,8 +26,8 @@ public class Juge : MonoBehaviour
     void Start()
     {
         ResetButton(false);
-        _failureImage.SetActive(false);
-        _successImage.SetActive(false);
+        //_failureImage.SetActive(false);
+        //_successImage.SetActive(false);
     }
 
     public void Jugement()
@@ -50,7 +50,8 @@ public class Juge : MonoBehaviour
             {
                 FindObjectOfType<HeartBeat>().State = HeartBeat.HeatBeatState.Normal;
                 //成功のUIを表示する
-                _successImage.SetActive(true);
+                StartCoroutine(InstantiateImage(_successImage));
+               //_successImage.SetActive(true);
                 //buttonを押せなくする
                 ResetButton(false);
                 //患者を左に動かすアニメーションを再生
@@ -67,13 +68,25 @@ public class Juge : MonoBehaviour
                 Debug.Log("間違えています");
                 if (noGoodCountNow == noGoodCountMax)　//ゲームオーバー
                 {
-                    FindObjectOfType<HeartBeat>().State = HeartBeat.HeatBeatState.Stop;
-                    //buttonを押せないようにする
-                    ResetButton(false);
-                    //失敗UIを表示する
-                    _failureImage.SetActive(true);
+                    //FindObjectOfType<HeartBeat>().State = HeartBeat.HeatBeatState.Stop;
+                    ////buttonを押せないようにする
+                    //ResetButton(false);
+                    ////失敗UIを表示する
+                    //_failureImage.SetActive(true);
+                    //_result.SetActive(true);
+                    FindObjectOfType<GameManager>().State = GameState.gameOver;
                 }
             }
+        }
+        else if(FindObjectOfType<GameManager>().State == GameState.gameOver)
+        {
+            FindObjectOfType<HeartBeat>().State = HeartBeat.HeatBeatState.Stop;
+            //buttonを押せないようにする
+            ResetButton(false);
+            //失敗UIを表示する
+            StartCoroutine(InstantiateImage(_failureImage));
+            //_failureImage.SetActive(true);
+            _result.SetActive(true);
         }
     }
 
@@ -113,5 +126,12 @@ public class Juge : MonoBehaviour
         {
             _buttons[i].interactable = TrueFalse;
         }
+    }
+
+    IEnumerator InstantiateImage(GameObject item)
+    {
+        item.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        item.SetActive(false);
     }
 }
