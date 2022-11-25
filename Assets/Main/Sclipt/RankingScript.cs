@@ -12,6 +12,11 @@ public class RankingScript : MonoBehaviour
     {
         public string name;
         public int score;
+        //public scoredata(string name, int score)
+        //{
+        //    this.name = name;
+        //    this.score = score;
+        //}
     }
     public InputField _inputfield;
     public Text _rankingtext;
@@ -20,12 +25,14 @@ public class RankingScript : MonoBehaviour
         = new Dictionary<string, int>();
     List<scoredata> _rankingData;
     scoredata sco2 = new scoredata();
+    StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/savedata.json");
+    StreamReader reader = new StreamReader(Application.persistentDataPath + "/savedata.json");
 
     void Start()
     {
         _inputfield = _inputfield.GetComponent<InputField>();
         _rankingtext = _rankingtext.GetComponent<Text>();
-        _resultscore = FindObjectOfType<GameManager>().TotalScore;
+        _resultscore = GameManager._totalScore;
 
         //スコアを取得する
         //_resultscore = GameManager._totalscore;
@@ -42,12 +49,12 @@ public class RankingScript : MonoBehaviour
         //}
     }
 
-    public void NameScore(string name, int score)
-    {
-        sco2.name = name;
-        sco2.score = score;
-        OnSave(sco2);
-    }
+    //public void NameScore(string name, int score)
+    //{
+    //    sco2.name = name;
+    //    sco2.score = score;
+    //    OnSave(sco2);
+    //}
     public void Score()
     {
         _dictionary.Add(_inputfield.text, _resultscore);
@@ -58,18 +65,19 @@ public class RankingScript : MonoBehaviour
         foreach (var ans in _dictionary.OrderByDescending(c => c.Value))
         {
             _rankingtext.text = ans.Key + " " + ans.Value.ToString();
-            NameScore(ans.Key, ans.Value);
+            //_rankingData.Add(new scoredata(ans.Key, ans.Value));
         }
+        OnSave(_rankingData);
     }
 
     //スコアをJSON形式で保存
-    public void OnSave(scoredata sco)
+    public void OnSave(List<scoredata> sco)
     {
         using (StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/savedata.json"))
         {
             string json = JsonUtility.ToJson(sco);
             writer.Write(json);
-            writer.Flush();
+            //writer.Flush();
             writer.Close();
         }
     }
