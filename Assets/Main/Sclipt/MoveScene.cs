@@ -50,7 +50,7 @@ public class MoveScene : MonoBehaviour
     }
     public void Ranking()
     {
-        SceneManager.LoadScene("RankingScene");
+        SceneManager.LoadScene("ScoreRanking");
     }
 
     public void SceneMove(string scenename)
