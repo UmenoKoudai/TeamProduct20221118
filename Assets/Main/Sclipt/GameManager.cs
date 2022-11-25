@@ -10,10 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] float _timer;
     [SerializeField] float _countDown;
     [SerializeField] Text _countDownText;
-    [SerializeField] GameObject _result;
     GameState _state = GameState.gameStart;
     //Vector2 _createPoint;
-    public static int _totalScore;
+    int _totalScore;
     public bool _timeStop;
 
     public int TotalScore { get => _totalScore; }
@@ -21,16 +20,21 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _totalScore = 0;
+        if(FindObjectsOfType<GameManager>().Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    void Start()
+    {
         _timerbar.maxValue = _timer;
         _timerbar.value = _timer;
     }
-
-    //void Start()
-    //{
-    //    _timerbar.maxValue = _timer;
-    //    _timerbar.value = _timer;
-    //}
 
     void Update()
     {
@@ -62,7 +66,6 @@ public class GameManager : MonoBehaviour
         }
         if(_timerbar.value <= 0)
         {
-            _result.SetActive(true);
             _state = GameState.gameOver;
         }
     }
