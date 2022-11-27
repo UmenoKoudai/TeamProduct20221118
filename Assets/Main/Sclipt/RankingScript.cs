@@ -25,20 +25,30 @@ public class RankingScript : MonoBehaviour
         = new Dictionary<string, int>();
     List<scoredata> _rankingData;
     scoredata sco2 = new scoredata();
-    StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/savedata.json");
-    StreamReader reader = new StreamReader(Application.persistentDataPath + "/savedata.json");
+    //StreamWriter writer = new StreamWriter("savedata.txt");
+    //StreamReader reader = new StreamReader("savedata.txt");
+    int a;
 
     void Start()
     {
-        _inputfield = _inputfield.GetComponent<InputField>();
-        _rankingtext = _rankingtext.GetComponent<Text>();
-        _resultscore = GameManager._totalScore;
+        //_inputfield = _inputfield.GetComponent<InputField>();
+        //_rankingtext = _rankingtext.GetComponent<Text>();
+        //_resultscore = GameManager._totalScore;
 
-        //スコアを取得する
-        //_resultscore = GameManager._totalscore;
-
+        ////スコアを取得する
+        ////_resultscore = GameManager._totalscore;
+        //if(reader != null)
+        //{
+        //    a = int.Parse(reader.ReadLine());
+        //}
+        //for(int i = 0; i < a; i++)
+        //{
+        //    var k = reader.ReadLine().Split();
+        //    _rankingtext.text = k[0] + " " + k[1];
+        //    _dictionary.Add(k[0], int.Parse(k[1]));
+        //}
         //JSON形式で保存したハイスコアデータを呼び出しsco2変数に代入
-        _rankingData = OnLoad();
+        //_rankingData = OnLoad();
         //sco2に代入した前回のスコアをスコアの変数に代入
         //if(_rankingData != null)
         //{
@@ -57,48 +67,50 @@ public class RankingScript : MonoBehaviour
     //}
     public void Score()
     {
-        _dictionary.Add(_inputfield.text, _resultscore);
-        foreach(var data in _rankingData)
-        {
-            _dictionary.Add(data.name, data.score);
-        }
-        foreach (var ans in _dictionary.OrderByDescending(c => c.Value))
-        {
-            _rankingtext.text = ans.Key + " " + ans.Value.ToString();
-            //_rankingData.Add(new scoredata(ans.Key, ans.Value));
-        }
-        OnSave(_rankingData);
+        //_dictionary.Add(_inputfield.text, _resultscore);
+        ////foreach(var data in _rankingData)
+        ////{
+        ////    _dictionary.Add(data.name, data.score);
+        ////}
+        //writer.WriteLine(_dictionary.Count);
+        //foreach (var ans in _dictionary.OrderByDescending(c => c.Value))
+        //{
+        //    _rankingtext.text = ans.Key + " " + ans.Value.ToString();
+        //    writer.WriteLine($"{ans.Key} {ans.Value.ToString()}");
+        //    //_rankingData.Add(new scoredata(ans.Key, ans.Value));
+        //}
+        //OnSave(_rankingData);
     }
 
     //スコアをJSON形式で保存
-    public void OnSave(List<scoredata> sco)
-    {
-        using (StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/savedata.json"))
-        {
-            string json = JsonUtility.ToJson(sco);
-            writer.Write(json);
-            //writer.Flush();
-            writer.Close();
-        }
-    }
-    //スコアの呼び出し
-    public List<scoredata> OnLoad()
-    {
-        try
-        {
-            using (StreamReader reader = new StreamReader(Application.persistentDataPath + "/savedata.json"))
-            {
-                //string datastr = "";
-                //string datastr = "";
-                string datastr = reader.ReadLine();
-                reader.Close();
-                return JsonUtility.FromJson<List<scoredata>>(datastr); ;
-            }
-        }
-        catch
-        {
-            Debug.LogWarning("データがありません");
-            return null;
-        }
-    } 
+    //public void OnSave(List<scoredata> sco)
+    //{
+    //    using (StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/savedata.json"))
+    //    {
+    //        string json = JsonUtility.ToJson(sco);
+    //        writer.Write(json);
+    //        //writer.Flush();
+    //        writer.Close();
+    //    }
+    //}
+    ////スコアの呼び出し
+    //public List<scoredata> OnLoad()
+    //{
+    //    try
+    //    {
+    //        using (StreamReader reader = new StreamReader(Application.persistentDataPath + "/savedata.json"))
+    //        {
+    //            //string datastr = "";
+    //            //string datastr = "";
+    //            string datastr = reader.ReadLine();
+    //            reader.Close();
+    //            return JsonUtility.FromJson<List<scoredata>>(datastr); ;
+    //        }
+    //    }
+    //    catch
+    //    {
+    //        Debug.LogWarning("データがありません");
+    //        return null;
+    //    }
+    //} 
 }

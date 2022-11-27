@@ -613,6 +613,7 @@ GameObject:
   - component: {fileID: 929608136}
   - component: {fileID: 929608135}
   - component: {fileID: 929608134}
+  - component: {fileID: 929608138}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -648,7 +649,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929608132}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd6c68c2d0a310d48b53f974a1e57676, type: 3}
   m_Name: 
@@ -699,9 +700,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 929608134}
-        m_TargetAssemblyTypeName: RankingScript, Assembly-CSharp
-        m_MethodName: Score
+      - m_Target: {fileID: 929608138}
+        m_TargetAssemblyTypeName: RankingTest, Assembly-CSharp
+        m_MethodName: ScoreSave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -749,6 +750,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929608132}
   m_CullTransparentMesh: 1
+--- !u!114 &929608138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929608132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97596ff6c19fac340ada55b07644f4bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputField: {fileID: 2115838244}
 --- !u!1 &1010276655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1048,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490060346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd6c68c2d0a310d48b53f974a1e57676, type: 3}
   m_Name: 
