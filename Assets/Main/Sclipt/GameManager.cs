@@ -16,20 +16,11 @@ public class GameManager : MonoBehaviour
     public static int _totalScore;
     public bool _timeStop;
 
-    //public static int TotalScore { get => _totalScore; }
     public GameState State { get => _state; set => _state = value; }
 
     private void Awake()
     {
         _totalScore = 0;
-        //if(FindObjectsOfType<GameManager>().Length > 1)
-        //{
-        //    Destroy(gameObject);
-        //}
-        //else
-        //{
-        //    DontDestroyOnLoad(gameObject);
-        //}
     }
 
     void Start()

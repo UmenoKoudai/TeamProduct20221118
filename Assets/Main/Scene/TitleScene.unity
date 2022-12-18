@@ -433,8 +433,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 350781375}
         m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
-        m_MethodName: SceneMove
-        m_Mode: 5
+        m_MethodName: MainBottan
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
